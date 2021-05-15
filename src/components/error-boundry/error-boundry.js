@@ -19,7 +19,6 @@ export default class ErrorBoundry extends Component {
         if(hasError)
             return <ErrorIndicator />
         
-        return 
-            {children}
+        return children
     }
 } 
