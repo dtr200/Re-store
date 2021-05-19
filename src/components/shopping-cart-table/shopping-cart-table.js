@@ -7,12 +7,12 @@ const ShoppingCartTable = ({ items, total, onIncrease,
                              onDecrease, onDelete }) => {
 
     const renderRow = (item, i) => {
-        const { id, name, count, total } = item;
+        const { id, title, count, total } = item;
 
         return (
             <tr key={id}>
                 <td>{i + 1}</td>
-                <td>{name}</td>
+                <td>{title}</td>
                 <td>{count}</td>
                 <td>${total}</td>
                 <td>
@@ -57,9 +57,9 @@ const ShoppingCartTable = ({ items, total, onIncrease,
     )
 }
 
-const mapStateToProps = ({ cartItem, orderTotal }) => {
+const mapStateToProps = ({ cartItems, orderTotal }) => {
     return {
-        items: cartItem,
+        items: cartItems,
         total: orderTotal
     }
 }
