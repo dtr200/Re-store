@@ -25,6 +25,34 @@ export const bookAddedToCart = (bookId) => {
     }
 }
 
+export const bookRemovedFromCart = (bookId) => {
+    return {
+        type: 'BOOK_REMOVED_FROM_CART',
+        payload: bookId
+    }
+}
+
+export const allBooksRemovedFromCart = (bookId) => {
+    return {
+        type: 'ALL_BOOKS_REMOVED_FROM_CART',
+        payload: bookId
+    }
+}
+
+export const bookIncreased = (bookId) => {
+    return {
+        type: 'BOOK_INCREASED',
+        payload: bookId
+    }
+}
+
+export const bookDecreased = (bookId) => {
+    return {
+        type: 'BOOK_DECREASED',
+        payload: bookId
+    }
+}
+
 const fetchBooks = (bookstoreService, dispatch) => () => {
     dispatch(booksRequested());
     bookstoreService.getBooks()
