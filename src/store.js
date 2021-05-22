@@ -1,6 +1,6 @@
-import { act } from 'react-dom/test-utils';
 import { createStore, applyMiddleware } from 'redux';
 import reducer from './reducers';
+import thunkMiddleware from 'redux-thunk';
 
 const logMiddleware = ({ getState }) => (dispatch) => (action) => {
     console.log(action.type, getState());
@@ -17,6 +17,19 @@ const stringMiddleware = () => (dispatch) => (action) => {
 }
 
 const store = createStore(reducer, applyMiddleware(
-    stringMiddleware, logMiddleware));
+    thunkMiddleware, stringMiddleware, logMiddleware));
+
+const  myAction = (dispatch) => {
+    setTimeout(() => dispatch({
+        type: 'DELAYED_ACTION'
+    }), 2000)
+}
+
+const delayedActionCreator = (timeout) => (dispatch) => {
+    setTimeout(() => dispatch({
+        type: 'DELAYED_ACTION'
+    }), timeout)
+}
+store.dispatch(delayedActionCreator(2000))
 
 export default store;
